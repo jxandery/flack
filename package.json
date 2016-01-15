@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jxandery/flack/issues"
   },
-  "homepage": "https://github.com/jxandery/flack#readme"
+  "homepage": "https://github.com/jxandery/flack#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
 }
