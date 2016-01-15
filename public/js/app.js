@@ -1,4 +1,8 @@
-var socket = io();
+var name    = getQueryVariable('name') || 'Anonymous';
+var room    = getQueryVariable('room');
+var socket  = io();
+
+console.log(name + ' wants to join ' + room);
 
 socket.on('connect', function() {
   console.log('Conected to socket.io server!')
@@ -6,10 +10,12 @@ socket.on('connect', function() {
 
 socket.on('message', function(message) {
   var momentTimestamp = moment.utc(message.timestamp);
+  var $message        = jQuery('.messages');
   console.log('new message:');
   console.log(message.text);
 
-  jQuery('.messages').append('<p><strong>' + momentTimestamp.local().format('h:mm a') + '</strong> :' + message.text + '</p>');
+  $message.append('<p><strong>' + message.name + ' ' + momentTimestamp.local().format('h:mm a') +  '</strong>');
+  $message.append('<p>' + message.text + '</p>');
 
 
 });
@@ -26,6 +32,7 @@ $form.on('submit', function(event) {
 
   // broadcasts whatever has been inputted in the message input field
   socket.emit('message', {
+    name: name,
     text: $message.val()
   });
 
