@@ -17,6 +17,12 @@ describe('server.js', function () {
       .expect(404, done);
   });
 
+  it('POST "/" without data returns a 500 internal server error', function (done) {
+    request(server)
+      .post('/')
+      .expect(500, done);
+  });
+
   it('POST "/whatthewhat" should return a 404 response', function (done) {
     request(server)
       .post('/whatthewhat')
