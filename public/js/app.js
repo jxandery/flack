@@ -50,3 +50,4 @@ $form.on('submit', function(event) {
   $message.val('');
 
 });
+
