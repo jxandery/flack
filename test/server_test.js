@@ -16,4 +16,10 @@ describe('server.js', function () {
       .get('/notarealpage')
       .expect(404, done);
   });
+
+  it('POST "/whatthewhat" should return a 404 response', function (done) {
+    request(server)
+      .post('/whatthewhat')
+      .expect(404, done);
+  });
 });
