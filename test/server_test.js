@@ -10,4 +10,10 @@ describe('server.js', function () {
       .get('/')
       .expect(200, done);
   });
+
+  it('GET "/notarealpage" should return a 404 response', function (done) {
+    request(server)
+      .get('/notarealpage')
+      .expect(404, done);
+  });
 });
